@@ -1,10 +1,10 @@
 on:
   push:
     paths:
-      - 'template/**'
+      - 'days/day1/**'
 
 env:
-  DIRECTORY: 'template'
+  DIRECTORY: 'days/day1'
 
 jobs:
   job:

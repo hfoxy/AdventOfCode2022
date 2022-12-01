@@ -1,5 +1,6 @@
-package me.hfox.adventofcode2022.template;
+package me.hfox.adventofcode2022;
 
+import me.hfox.adventofcode2022.util.DelayedFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,8 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-
-import static me.hfox.adventofcode2022.template.util.DelayedFormatter.format;
 
 public class Starter {
 
@@ -27,7 +26,7 @@ public class Starter {
         Object result = task.run();
         long end = System.nanoTime();
         LOGGER.info("Result: {}", result);
-        LOGGER.info("Took {}ms", format("%.03f", (end - start) / 1000000.0));
+        LOGGER.info("Took {}ms", DelayedFormatter.format("%.03f", (end - start) / 1000000.0));
     }
 
 }

@@ -1,4 +1,4 @@
-package me.hfox.adventofcode2022.template;
+package me.hfox.adventofcode2022;
 
 import java.util.List;
 

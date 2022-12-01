@@ -1,4 +1,4 @@
-package me.hfox.adventofcode2022.template.util;
+package me.hfox.adventofcode2022.util;
 
 public class DelayedFormatter {
     public static Object format(String format, Object... args) {

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.hfox.adventofcode2022</groupId>
-    <artifactId>day1</artifactId>
+    <artifactId>day1-part1</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

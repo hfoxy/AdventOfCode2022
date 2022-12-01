@@ -1,0 +1,29 @@
+on:
+  push:
+    branches:
+      - 'main'
+      - 'develop'
+    paths:
+      - 'days/day2-part2/**'
+
+env:
+  DIRECTORY: 'days/day2-part2'
+
+jobs:
+  job:
+    name: Job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 19
+        uses: actions/setup-java@v2
+        with:
+          java-version: '19'
+          distribution: 'adopt'
+          cache: 'maven'
+      - name: Build Project
+        working-directory: ${{ env.DIRECTORY }}
+        run: mvn clean install -T 2
+      - name: Run Project
+        working-directory: ${{ env.DIRECTORY }}
+        run: java -jar target/task.jar

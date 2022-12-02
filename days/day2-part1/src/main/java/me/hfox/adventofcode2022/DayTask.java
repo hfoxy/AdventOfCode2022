@@ -11,7 +11,30 @@ public class DayTask {
     }
 
     public Object run() {
-        return null;
+        int score = 0;
+        for (String line : lines) {
+            char[] chars = line.toCharArray();
+            if (chars.length == 0) {
+                continue;
+            }
+
+            if (chars.length != 3) {
+                throw new IllegalArgumentException("Invalid line: " + line);
+            }
+
+            RockPaperScissors opponent = RockPaperScissors.fromChar(chars[0]);
+            RockPaperScissors choice = RockPaperScissors.fromChar(chars[2]);
+
+            if (choice.beats(opponent)) {
+                score += 6;
+            } else if (choice == opponent) {
+                score += 3;
+            }
+
+            score += choice.getScore();
+        }
+
+        return score;
     }
 
 }

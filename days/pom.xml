@@ -22,5 +22,7 @@
         <module>day5-part2</module>
         <module>day6-part1</module>
         <module>day6-part2</module>
+        <module>day7-part1</module>
+        <module>day7-part2</module>
     </modules>
 </project>

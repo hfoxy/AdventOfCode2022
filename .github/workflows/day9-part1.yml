@@ -1,0 +1,32 @@
+name: day 9 part 1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+      - 'develop'
+    paths:
+      - 'days/day9-part1/**'
+
+env:
+  DIRECTORY: 'days/day9-part1'
+
+jobs:
+  job:
+    name: Job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 19
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          distribution: 'adopt'
+          cache: 'maven'
+      - name: Build Project
+        working-directory: ${{ env.DIRECTORY }}
+        run: mvn clean install -T 2
+      - name: Run Project
+        working-directory: ${{ env.DIRECTORY }}
+        run: java -jar target/task.jar

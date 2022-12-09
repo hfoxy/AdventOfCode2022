@@ -1,3 +1,5 @@
+name: day 7 part 1
+
 on:
   workflow_dispatch:
   push:

@@ -19,13 +19,16 @@ if [ -d "$dir" ]; then
     exit 2
 fi
 
+# if there are issues with this on mac, you need to use set -i '' ...
 echo "Copying template"
 cp -r template "$dir"
-sed -i "s#template#$task#g" "$dir/pom.xml"
+sed -i '' "s#template#$task#g" "$dir/pom.xml"
 git add "$dir"
 
+# if there are issues with this on mac, you need to use set -i '' ...
 echo "Copying workflow template"
 cp .github/workflows/template.yml ".github/workflows/$task.yml"
+sed -i "s#name: template#name: $name#g" ".github/workflows/$task.yml"
 sed -i "s#template#$dir#g" ".github/workflows/$task.yml"
 git add ".github/workflows/$task.yml"
 

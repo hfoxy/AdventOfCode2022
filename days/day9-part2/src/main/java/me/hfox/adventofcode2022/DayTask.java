@@ -64,6 +64,8 @@ public class DayTask {
                         previousAction = MoveAction.UP;
                     } else if (ropePair.tailPosition.y < position.y) {
                         previousAction = MoveAction.DOWN;
+                    } else {
+                        break;
                     }
                 }
             }

@@ -39,13 +39,33 @@ public class DayTask {
             LOGGER.info("Move: {}", line);
             LOGGER.info("----------");
             for (int i = 0; i < moves; i++) {
-                ropePair = action.moveHead(ropePair);
-                LOGGER.info("Move {}", action);
-                if (usedPositions.add(ropePair.tailPosition)) {
-                    LOGGER.info("Added new position: {}/{}", ropePair.tailPosition.x, ropePair.tailPosition.y);
-                }
+                Position previous = null;
+                MoveAction previousAction = action;
 
-                draw(usedPositions, ropePair);
+                for (Position position : rope.knots) {
+                    if (previous == null) {
+                        previous = position;
+                        continue;
+                    }
+
+                    RopePair ropePair = new RopePair(previous, position);
+                    ropePair = previousAction.moveHead(ropePair);
+                    LOGGER.info("Move {}", action);
+                    if (usedPositions.add(ropePair.tailPosition)) {
+                        LOGGER.info("Added new position: {}/{}", ropePair.tailPosition.x, ropePair.tailPosition.y);
+                    }
+
+                    draw(usedPositions, ropePair);
+                    if (ropePair.tailPosition.x > position.x) {
+                        previousAction = MoveAction.LEFT;
+                    } else if (ropePair.tailPosition.x < position.x) {
+                        previousAction = MoveAction.RIGHT;
+                    } else if (ropePair.tailPosition.y > position.y) {
+                        previousAction = MoveAction.UP;
+                    } else if (ropePair.tailPosition.y < position.y) {
+                        previousAction = MoveAction.DOWN;
+                    }
+                }
             }
         }
 
